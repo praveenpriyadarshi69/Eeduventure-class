@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eduventure Classes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #0a4275;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header img {
+      width: 80px;
+      border-radius: 50%;
+    }
+
+    nav {
+      background-color: #08426b;
+      overflow: auto;
+      text-align: center;
+    }
+
+    nav a {
+      display: inline-block;
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      background-color: #063054;
+    }
+
+    section {
+      padding: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      max-width: 300px;
+      margin: 10px;
+      border-radius: 10px;
+    }
+
+    footer {
+      background-color: #0a4275;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .faculty, .notes {
+      background-color: #f2f2f2;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    .notes form {
+      margin-top: 15px;
+    }
+
+    .note-list a {
+      display: block;
+      margin: 5px 0;
+    }
+
+    @media (max-width: 600px) {
+      nav a {
+        display: block;
+        width: 100%;
+      }
+
+      .gallery img {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="https://i.postimg.cc/FHC7yJPC/Whats-App-Image-2025-08-02-at-22-08-59-31dcc03a.jpg" alt="Logo">
+    <h1>Eduventure Classes</h1>
+    <p>Masaurhi | Sain More | Dhanarua</p>
+  </header>
+
+  <nav>
+    <a href="#about">About Us</a>
+    <a href="#faculty">Faculty</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#notes">Notes</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Eduventure Classes is one of the best coaching institutes in the Masaurhi area, providing quality education for Classes 6 to 10 in Science, Social Science, and Maths. We are committed to your academic success and focused on strong concept building with discipline.</p>
+    <p><strong>Director:</strong> Ankit Sir</p>
+  </section>
+
+  <section id="faculty" class="faculty">
+    <h2>Our Faculty</h2>
+    <ul>
+      <li><strong>Science:</strong> Ankit Sir</li>
+      <li><strong>Social Science:</strong> Saurav Sir</li>
+      <li><strong>Maths:</strong> Pintu Sir, Anmol Sir, Yuvraj Sir</li>
+      <li><strong>Special Biology:</strong> Arpana Ma’am</li>
+    </ul>
+  </section>
+
+  <section id="gallery" class="gallery">
+    <h2>Gallery</h2>
+    <img src="https://i.postimg.cc/1twX17yb/Whats-App-Image-2025-08-02-at-22-08-59-4987ba43.jpg" alt="Classroom 1">
+    <img src="https://i.postimg.cc/RhmFS1Fh/Whats-App-Image-2025-08-02-at-22-09-00-1a8bd590.jpg" alt="Classroom 2">
+    <img src="https://i.postimg.cc/FHHYkxxJ/Whats-App-Image-2025-08-02-at-22-09-00-d0977ef2.jpg" alt="Students 1">
+    <img src="https://i.postimg.cc/KYK4JvwG/Whats-App-Image-2025-08-02-at-22-09-01-5b7656c4.jpg" alt="Students 2">
+    <img src="https://i.postimg.cc/Z51PZgrL/Whats-App-Image-2.jpg" alt="Group Photo">
+  </section>
+
+  <section id="notes" class="notes">
+    <h2>Download & Upload Notes</h2>
+
+    <!-- Upload Form -->
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+      <label for="note">Upload PDF:</label>
+      <input type="file" name="note" accept="application/pdf" required>
+      <button type="submit">Upload</button>
+    </form>
+
+    <!-- Download List -->
+    <h3>Available Notes:</h3>
+    <div class="note-list">
+      <?php
+        $files = glob("uploads/*.pdf");
+        foreach ($files as $file) {
+          $name = basename($file);
+          echo "<a href='$file' download>$name</a>";
+        }
+      ?>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p><strong>Branches:</strong> Masaurhi (Main), Sain More, Dhanarua</p>
+    <p><strong>Phone:</strong> +91 86035 35373, +91 96939 54445</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Eduventure Classes. All rights reserved.</p>
+  </footer>
+</body>
+</html>
